@@ -97,6 +97,19 @@ module turbos_clmm::pool {
         reward_last_updated_time_ms: u64,
     }
 
+    struct ComputeSwapState has copy, drop {
+        amount_a: u128,
+        amount_b: u128, 
+        amount_specified_remaining: u128,
+        amount_calculated: u128,
+        sqrt_price: u128,
+        tick_current_index: I32,
+        fee_growth_global: u128,
+        protocol_fee: u128,
+        liquidity: u128,
+        fee_amount: u128,
+    }
+
     public fun version(versioned: &Versioned): u64 {
        abort 0
     }

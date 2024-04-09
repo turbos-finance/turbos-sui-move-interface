@@ -45,6 +45,60 @@ module turbos_clmm::position_manager {
         nft_img_url: String,
     }
 
+    public fun mint_with_return_<CoinTypeA, CoinTypeB, FeeType>(
+        pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        positions: &mut Positions,
+        coins_a: vector<Coin<CoinTypeA>>, 
+        coins_b: vector<Coin<CoinTypeB>>, 
+        tick_lower_index: u32,
+        tick_lower_index_is_neg: bool,
+        tick_upper_index: u32,
+        tick_upper_index_is_neg: bool,
+        amount_a_desired: u64,
+        amount_b_desired: u64,
+        amount_a_min: u64,
+        amount_b_min: u64,
+        deadline: u64,
+        clock: &Clock,
+        versioned: &Versioned,
+        ctx: &mut TxContext
+    ): (TurbosPositionNFT, Coin<CoinTypeA>, Coin<CoinTypeB>) {
+        abort 0
+    }
+
+    public fun increase_liquidity_with_return_<CoinTypeA, CoinTypeB, FeeType>(
+        pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        positions: &mut Positions,
+        coins_a: vector<Coin<CoinTypeA>>, 
+        coins_b: vector<Coin<CoinTypeB>>, 
+        nft: &mut TurbosPositionNFT,
+        amount_a_desired: u64,
+        amount_b_desired: u64,
+        amount_a_min: u64,
+        amount_b_min: u64,
+        deadline: u64,
+        clock: &Clock,
+        versioned: &Versioned,
+        ctx: &mut TxContext
+    ): (Coin<CoinTypeA>, Coin<CoinTypeB>) {
+        abort 0
+    }
+
+    public fun decrease_liquidity_with_return_<CoinTypeA, CoinTypeB, FeeType>(
+        pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        positions: &mut Positions,
+        nft: &mut TurbosPositionNFT,
+        liquidity: u128,
+        amount_a_min: u64,
+        amount_b_min: u64,
+        deadline: u64,
+        clock: &Clock,
+        versioned: &Versioned,
+        ctx: &mut TxContext
+    ): (Coin<CoinTypeA>, Coin<CoinTypeB>) {
+        abort 0
+    }
+
     public entry fun mint<CoinTypeA, CoinTypeB, FeeType>(
 		pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
 		positions: &mut Positions,
@@ -109,6 +163,21 @@ module turbos_clmm::position_manager {
         abort 0
     }
 
+    public fun collect_with_return_<CoinTypeA, CoinTypeB, FeeType>(
+        pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        positions: &mut Positions,
+        nft: &mut TurbosPositionNFT,
+        amount_a_max: u64,
+        amount_b_max: u64,
+        recipient: address,
+        deadline: u64,
+        clock: &Clock,
+        versioned: &Versioned,
+        ctx: &mut TxContext
+    ): (Coin<CoinTypeA>, Coin<CoinTypeB>) {
+        abort 0
+    }
+
     public entry fun collect<CoinTypeA, CoinTypeB, FeeType>(
 		pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
 		positions: &mut Positions,
@@ -121,6 +190,22 @@ module turbos_clmm::position_manager {
         versioned: &Versioned,
 		ctx: &mut TxContext
     ) {
+        abort 0
+    }
+
+    public fun collect_reward_with_return_<CoinTypeA, CoinTypeB, FeeType, RewardCoin>(
+        pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        positions: &mut Positions,
+        nft: &mut TurbosPositionNFT,
+        vault: &mut PoolRewardVault<RewardCoin>,
+        reward_index: u64,
+        amount_max: u64,
+        recipient: address,
+        deadline: u64,
+        clock: &Clock,
+        versioned: &Versioned,
+        ctx: &mut TxContext
+    ): Coin<RewardCoin> {
         abort 0
     }
 
@@ -137,6 +222,13 @@ module turbos_clmm::position_manager {
         versioned: &Versioned,
 		ctx: &mut TxContext
     ) {
+        abort 0
+    }
+
+    public fun get_position_info(
+        positions: &Positions,
+        nft_address: address,
+    ): (I32, I32, u128) {
         abort 0
     }
 }

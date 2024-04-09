@@ -138,6 +138,15 @@ module turbos_clmm::pool {
         abort 0
     }
 
+    public fun check_position_exists<CoinTypeA, CoinTypeB, FeeType>(
+        pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+        owner: address,
+        tick_lower_index: I32,
+        tick_upper_index: I32,
+    ): bool {
+        abort 0
+    }
+
     public fun get_position_key(
         owner: address,
         tick_lower_index: I32,
@@ -158,6 +167,18 @@ module turbos_clmm::pool {
         abort 0
     }
 
+    public fun get_pool_tick_spacing<CoinTypeA, CoinTypeB, FeeType>(
+        pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+    ): u32 {
+        abort 0
+    }
+
+    public fun get_pool_current_index<CoinTypeA, CoinTypeB, FeeType>(
+        pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+    ): I32 {
+        abort 0
+    }
+
     public fun get_position_fee_growth_inside_a<CoinTypeA, CoinTypeB, FeeType>(
         pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
         key: String
@@ -165,6 +186,12 @@ module turbos_clmm::pool {
         abort 0
     }
 
+    // position.liquidity,
+    // position.fee_growth_inside_a,
+    // position.fee_growth_inside_b,
+    // position.tokens_owed_a,
+    // position.tokens_owed_b,
+    // &position.reward_infos
     public fun get_position_base_info<CoinTypeA, CoinTypeB, FeeType>(
         pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
         key: String

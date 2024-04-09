@@ -4,7 +4,7 @@ version = "0.0.1"
 published-at = "0xfea145c1608cd5366ffcf278c0124d9f416b30e33a6a47ee12c615420ee0224c"
 
 [dependencies]
-Sui = { git = "https://github.com/MystenLabs/sui.git", subdir="crates/sui-framework/packages/sui-framework", rev = "sui-v1.0.0" }
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir="crates/sui-framework/packages/sui-framework", rev = "mainnet" }
 
 [addresses]
 turbos_clmm = "0xfea145c1608cd5366ffcf278c0124d9f416b30e33a6a47ee12c615420ee0224c"

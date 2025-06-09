@@ -25,6 +25,7 @@ module turbos_clmm::pool {
     use turbos_clmm::full_math_u128;
     use turbos_clmm::math_u128;
 	use turbos_clmm::math_bit;
+    use turbos_clmm::partner::{Partner};
     use sui::table::{Self, Table};
     use sui::clock::{Self, Clock};
 
@@ -97,6 +98,20 @@ module turbos_clmm::pool {
         reward_last_updated_time_ms: u64,
     }
 
+    struct FlashSwapReceipt<phantom CoinTypeA, phantom CoinTypeB> {
+        pool_id: ID,
+        a_to_b: bool,
+        pay_amount: u64,
+    }
+
+    struct FlashSwapReceiptPartner<phantom CoinTypeA, phantom CoinTypeB> {
+        pool_id: ID,
+        a_to_b: bool,
+        pay_amount: u64,
+        partner_id: ID,
+        partner_fee_amount: u64,
+    }
+
     struct ComputeSwapState has copy, drop {
         amount_a: u128,
         amount_b: u128, 
@@ -110,78 +125,78 @@ module turbos_clmm::pool {
         fee_amount: u128,
     }
 
-    public fun version(versioned: &Versioned): u64 {
+    public fun version(_versioned: &Versioned): u64 {
        abort 0
     }
 
-    public fun check_version(versioned: &Versioned) {
+    public fun check_version(_versioned: &Versioned) {
         abort 0
     }
 
-	public fun position_tick(tick: I32): (I32, u8) {
+	public fun position_tick(_tick: I32): (I32, u8) {
 		abort 0
     }
 
 	public fun get_tick<CoinTypeA, CoinTypeB, FeeType>(
-        pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
-        index: I32
+        _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _index: I32
     ): &Tick {
         abort 0
 	}
 
     public fun get_position<CoinTypeA, CoinTypeB, FeeType>(
-        pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
-        owner: address,
-        tick_lower_index: I32,
-        tick_upper_index: I32,
+        _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _owner: address,
+        _tick_lower_index: I32,
+        _tick_upper_index: I32,
     ): &Position {
         abort 0
     }
 
     public fun check_position_exists<CoinTypeA, CoinTypeB, FeeType>(
-        pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
-        owner: address,
-        tick_lower_index: I32,
-        tick_upper_index: I32,
+        _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _owner: address,
+        _tick_lower_index: I32,
+        _tick_upper_index: I32,
     ): bool {
         abort 0
     }
 
     public fun get_position_key(
-        owner: address,
-        tick_lower_index: I32,
-        tick_upper_index: I32,
+        _owner: address,
+        _tick_lower_index: I32,
+        _tick_upper_index: I32,
     ): String {
         abort 0
     }
 
     public fun get_pool_fee<CoinTypeA, CoinTypeB, FeeType>(
-        pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
     ): u32 {
         abort 0
     }
 
     public fun get_pool_sqrt_price<CoinTypeA, CoinTypeB, FeeType>(
-        pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
     ): u128 {
         abort 0
     }
 
     public fun get_pool_tick_spacing<CoinTypeA, CoinTypeB, FeeType>(
-        pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
     ): u32 {
         abort 0
     }
 
     public fun get_pool_current_index<CoinTypeA, CoinTypeB, FeeType>(
-        pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
     ): I32 {
         abort 0
     }
 
     public fun get_position_fee_growth_inside_a<CoinTypeA, CoinTypeB, FeeType>(
-        pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
-        key: String
+        _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _key: String
     ): u128 {
         abort 0
     }
@@ -193,35 +208,84 @@ module turbos_clmm::pool {
     // position.tokens_owed_b,
     // &position.reward_infos
     public fun get_position_base_info<CoinTypeA, CoinTypeB, FeeType>(
-        pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
-        key: String
+        _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _key: String
     ): (u128, u128, u128, u64, u64, &vector<PositionRewardInfo>) {
         abort 0
     }
 
     public fun get_position_reward_infos<CoinTypeA, CoinTypeB, FeeType>(
-        pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
-        key: String
+        _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _key: String
     ): &vector<PositionRewardInfo> {
         abort 0
     }
 
     public fun get_position_reward_info(
-        reawrd_info: &PositionRewardInfo
+        _reawrd_info: &PositionRewardInfo
     ): (u128, u64) {
         abort 0
     }
 
     public fun get_position_fee_growth_inside_b<CoinTypeA, CoinTypeB, FeeType>(
-        pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
-        key: String
+        _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _key: String
     ): u128 {
         abort 0
     }
 
     public fun get_pool_balance<CoinTypeA, CoinTypeB, FeeType>(
-		pool: &Pool<CoinTypeA, CoinTypeB, FeeType>, 
+		_pool: &Pool<CoinTypeA, CoinTypeB, FeeType>, 
 	): (u64, u64) {
+        abort 0
+    }
+
+    public fun flash_swap<CoinTypeA, CoinTypeB, FeeType>(
+        _pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _recipient: address,
+        _a_to_b: bool,
+        _amount_specified: u128,
+        _amount_specified_is_input: bool,
+        _sqrt_price_limit: u128,
+        _clock: &Clock,
+        _versioned: &Versioned,
+        _ctx: &mut TxContext,
+    ): (Coin<CoinTypeA>, Coin<CoinTypeB>, FlashSwapReceipt<CoinTypeA, CoinTypeB>) {
+        abort 0
+    }
+
+    public fun flash_swap_partner<CoinTypeA, CoinTypeB, FeeType>(
+        _pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _partner: &Partner,
+        _a_to_b: bool,
+        _amount_specified: u128,
+        _amount_specified_is_input: bool,
+        _sqrt_price_limit: u128,
+        _clock: &Clock,
+        _versioned: &Versioned,
+        _ctx: &mut TxContext,
+    ): (Coin<CoinTypeA>, Coin<CoinTypeB>, FlashSwapReceiptPartner<CoinTypeA, CoinTypeB>) {
+        abort 0
+    }
+
+    public fun repay_flash_swap<CoinTypeA, CoinTypeB, FeeType>(
+        _pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _coin_a: Coin<CoinTypeA>,
+        _coin_b: Coin<CoinTypeB>,
+        _receipt: FlashSwapReceipt<CoinTypeA, CoinTypeB>,
+        _versioned: &Versioned
+    ) {
+        abort 0
+    }
+
+    public fun repay_flash_swap_partner<CoinTypeA, CoinTypeB, FeeType>(
+        _pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _partner: &mut Partner,
+        _coin_a: Coin<CoinTypeA>,
+        _coin_b: Coin<CoinTypeB>,
+        _receipt: FlashSwapReceiptPartner<CoinTypeA, CoinTypeB>,
+        _versioned: &Versioned,
+    ) {
         abort 0
     }
 }

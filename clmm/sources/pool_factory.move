@@ -2,22 +2,19 @@
 // SPDX-License-Identifier: MIT
 
 module turbos_clmm::pool_factory {
-	use std::vector;
-	use std::type_name::{Self, TypeName};
-	use sui::event;
-	use std::hash;
-	use std::ascii;
-    use sui::vec_map::{Self, VecMap};
-    use sui::transfer;
-    use sui::object::{Self, UID, ID};
-    use sui::tx_context::{Self, TxContext};
+	use std::type_name::{TypeName};
+    use sui::vec_map::{VecMap};
+    use sui::object::{UID, ID};
+    use sui::tx_context::{TxContext};
 	use sui::coin::{Coin};
-	use turbos_clmm::position_manager::{Self, Positions};
-    use turbos_clmm::fee::{Self, Fee};
+	use turbos_clmm::position_manager::{Positions};
+	use turbos_clmm::position_nft::{TurbosPositionNFT};
+    use turbos_clmm::fee::{Fee};
 	use sui::clock::{Clock};
-	use turbos_clmm::pool::{Self, Pool, Versioned};
-	use std::string::{Self, String};
-	use sui::table::{Self, Table};
+	use turbos_clmm::pool::{Versioned};
+	use std::string::{String};
+	use sui::table::{Table};
+	use std::option::{Option};
     
 	struct PoolFactoryAdminCap has key, store { id: UID }
 
@@ -39,37 +36,66 @@ module turbos_clmm::pool_factory {
     }
 
 	public entry fun deploy_pool_and_mint<CoinTypeA, CoinTypeB, FeeType>(
-		pool_config: &mut PoolConfig,
-		feeType: &Fee<FeeType>,
-		sqrt_price: u128,
-		positions: &mut Positions,
-		coins_a: vector<Coin<CoinTypeA>>,
-		coins_b: vector<Coin<CoinTypeB>>,
-		tick_lower_index: u32,
-		tick_lower_index_is_neg: bool,
-        tick_upper_index: u32,
-		tick_upper_index_is_neg: bool,
-		amount_a_desired: u64,
-        amount_b_desired: u64,
-        amount_a_min: u64,
-        amount_b_min: u64,
-        recipient: address,
-        deadline: u64,
-		clock: &Clock,
-		versioned: &Versioned,
-		ctx: &mut TxContext
+		_pool_config: &mut PoolConfig,
+		_feeType: &Fee<FeeType>,
+		_sqrt_price: u128,
+		_positions: &mut Positions,
+		_coins_a: vector<Coin<CoinTypeA>>,
+		_coins_b: vector<Coin<CoinTypeB>>,
+		_tick_lower_index: u32,
+		_tick_lower_index_is_neg: bool,
+        _tick_upper_index: u32,
+		_tick_upper_index_is_neg: bool,
+		_amount_a_desired: u64,
+        _amount_b_desired: u64,
+        _amount_a_min: u64,
+        _amount_b_min: u64,
+        _recipient: address,
+        _deadline: u64,
+		_clock: &Clock,
+		_versioned: &Versioned,
+		_ctx: &mut TxContext
     ) {
 		abort 0
     }
 
+	public fun deploy_pool_and_mint_with_return_<CoinTypeA, CoinTypeB, FeeType>(
+        _pool_config: &mut PoolConfig,
+        _feeType: &Fee<FeeType>,
+        _sqrt_price: u128,
+        _positions: &mut Positions,
+        _coins_a: vector<Coin<CoinTypeA>>,
+        _coins_b: vector<Coin<CoinTypeB>>,
+        _tick_lower_index: u32,
+        _tick_lower_index_is_neg: bool,
+        _tick_upper_index: u32,
+        _tick_upper_index_is_neg: bool,
+        _amount_a_desired: u64,
+        _amount_b_desired: u64,
+        _amount_a_min: u64,
+        _amount_b_min: u64,
+        _deadline: u64,
+        _clock: &Clock,
+        _versioned: &Versioned,
+        _ctx: &mut TxContext
+    ): (TurbosPositionNFT, Coin<CoinTypeA>, Coin<CoinTypeB>, ID) {
+		abort 0
+	}
+
     public entry fun deploy_pool<CoinTypeA, CoinTypeB, FeeType>(
-		pool_config: &mut PoolConfig,
-		feeType: &Fee<FeeType>,
-		sqrt_price: u128,
-		clock: &Clock,
-		versioned: &Versioned,
-		ctx: &mut TxContext
+		_pool_config: &mut PoolConfig,
+		_feeType: &Fee<FeeType>,
+		_sqrt_price: u128,
+		_clock: &Clock,
+		_versioned: &Versioned,
+		_ctx: &mut TxContext
     ) {
 		abort 0
+    }
+
+	public fun get_pool_id<CoinTypeA, CoinTypeB, FeeType>(
+        _pool_config: &mut PoolConfig,
+    ): Option<ID> {
+        abort 0
     }
 }

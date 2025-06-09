@@ -12,11 +12,11 @@ module turbos_clmm::fee {
         tick_spacing: u32,
     }
 
-	public fun get_fee<T>(self: &Fee<T>): u32 {
+	public fun get_fee<T>(_self: &Fee<T>): u32 {
         abort 0
     }
 
-    public fun get_tick_spacing<T>(self: &Fee<T>): u32 {
+    public fun get_tick_spacing<T>(_self: &Fee<T>): u32 {
         abort 0
     }
 }

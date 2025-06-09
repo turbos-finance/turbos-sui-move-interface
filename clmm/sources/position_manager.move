@@ -46,188 +46,188 @@ module turbos_clmm::position_manager {
     }
 
     public fun mint_with_return_<CoinTypeA, CoinTypeB, FeeType>(
-        pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
-        positions: &mut Positions,
-        coins_a: vector<Coin<CoinTypeA>>, 
-        coins_b: vector<Coin<CoinTypeB>>, 
-        tick_lower_index: u32,
-        tick_lower_index_is_neg: bool,
-        tick_upper_index: u32,
-        tick_upper_index_is_neg: bool,
-        amount_a_desired: u64,
-        amount_b_desired: u64,
-        amount_a_min: u64,
-        amount_b_min: u64,
-        deadline: u64,
-        clock: &Clock,
-        versioned: &Versioned,
-        ctx: &mut TxContext
+        _pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _positions: &mut Positions,
+        _coins_a: vector<Coin<CoinTypeA>>, 
+        _coins_b: vector<Coin<CoinTypeB>>, 
+        _tick_lower_index: u32,
+        _tick_lower_index_is_neg: bool,
+        _tick_upper_index: u32,
+        _tick_upper_index_is_neg: bool,
+        _amount_a_desired: u64,
+        _amount_b_desired: u64,
+        _amount_a_min: u64,
+        _amount_b_min: u64,
+        _deadline: u64,
+        _clock: &Clock,
+        _versioned: &Versioned,
+        _ctx: &mut TxContext
     ): (TurbosPositionNFT, Coin<CoinTypeA>, Coin<CoinTypeB>) {
         abort 0
     }
 
     public fun increase_liquidity_with_return_<CoinTypeA, CoinTypeB, FeeType>(
-        pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
-        positions: &mut Positions,
-        coins_a: vector<Coin<CoinTypeA>>, 
-        coins_b: vector<Coin<CoinTypeB>>, 
-        nft: &mut TurbosPositionNFT,
-        amount_a_desired: u64,
-        amount_b_desired: u64,
-        amount_a_min: u64,
-        amount_b_min: u64,
-        deadline: u64,
-        clock: &Clock,
-        versioned: &Versioned,
-        ctx: &mut TxContext
+        _pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _positions: &mut Positions,
+        _coins_a: vector<Coin<CoinTypeA>>, 
+        _coins_b: vector<Coin<CoinTypeB>>, 
+        _nft: &mut TurbosPositionNFT,
+        _amount_a_desired: u64,
+        _amount_b_desired: u64,
+        _amount_a_min: u64,
+        _amount_b_min: u64,
+        _deadline: u64,
+        _clock: &Clock,
+        _versioned: &Versioned,
+        _ctx: &mut TxContext
     ): (Coin<CoinTypeA>, Coin<CoinTypeB>) {
         abort 0
     }
 
     public fun decrease_liquidity_with_return_<CoinTypeA, CoinTypeB, FeeType>(
-        pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
-        positions: &mut Positions,
-        nft: &mut TurbosPositionNFT,
-        liquidity: u128,
-        amount_a_min: u64,
-        amount_b_min: u64,
-        deadline: u64,
-        clock: &Clock,
-        versioned: &Versioned,
-        ctx: &mut TxContext
+        _pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _positions: &mut Positions,
+        _nft: &mut TurbosPositionNFT,
+        _liquidity: u128,
+        _amount_a_min: u64,
+        _amount_b_min: u64,
+        _deadline: u64,
+        _clock: &Clock,
+        _versioned: &Versioned,
+        _ctx: &mut TxContext
     ): (Coin<CoinTypeA>, Coin<CoinTypeB>) {
         abort 0
     }
 
     public entry fun mint<CoinTypeA, CoinTypeB, FeeType>(
-		pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
-		positions: &mut Positions,
-		coins_a: vector<Coin<CoinTypeA>>, 
-		coins_b: vector<Coin<CoinTypeB>>, 
-		tick_lower_index: u32,
-		tick_lower_index_is_neg: bool,
-        tick_upper_index: u32,
-		tick_upper_index_is_neg: bool,
-		amount_a_desired: u64,
-        amount_b_desired: u64,
-        amount_a_min: u64,
-        amount_b_min: u64,
-        recipient: address,
-        deadline: u64,
-        clock: &Clock,
-        versioned: &Versioned,
-		ctx: &mut TxContext
+		_pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+		_positions: &mut Positions,
+		_coins_a: vector<Coin<CoinTypeA>>, 
+		_coins_b: vector<Coin<CoinTypeB>>, 
+		_tick_lower_index: u32,
+		_tick_lower_index_is_neg: bool,
+        _tick_upper_index: u32,
+		_tick_upper_index_is_neg: bool,
+		_amount_a_desired: u64,
+        _amount_b_desired: u64,
+        _amount_a_min: u64,
+        _amount_b_min: u64,
+        _recipient: address,
+        _deadline: u64,
+        _clock: &Clock,
+        _versioned: &Versioned,
+		_ctx: &mut TxContext
     ) {
         abort 0
     }
 
     public entry fun burn<CoinTypeA, CoinTypeB, FeeType>(
-        positions: &mut Positions,
-        nft: TurbosPositionNFT,
-        versioned: &Versioned,
+        _positions: &mut Positions,
+        _nft: TurbosPositionNFT,
+        _versioned: &Versioned,
         _ctx: &mut TxContext
     ) {
         abort 0
     }
 
     public entry fun increase_liquidity<CoinTypeA, CoinTypeB, FeeType>(
-		pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
-		positions: &mut Positions,
-		coins_a: vector<Coin<CoinTypeA>>, 
-		coins_b: vector<Coin<CoinTypeB>>, 
-		nft: &mut TurbosPositionNFT,
-		amount_a_desired: u64,
-        amount_b_desired: u64,
-        amount_a_min: u64,
-        amount_b_min: u64,
-        deadline: u64,
-        clock: &Clock,
-        versioned: &Versioned,
-		ctx: &mut TxContext
+		_pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+		_positions: &mut Positions,
+		_coins_a: vector<Coin<CoinTypeA>>, 
+		_coins_b: vector<Coin<CoinTypeB>>, 
+		_nft: &mut TurbosPositionNFT,
+		_amount_a_desired: u64,
+        _amount_b_desired: u64,
+        _amount_a_min: u64,
+        _amount_b_min: u64,
+        _deadline: u64,
+        _clock: &Clock,
+        _versioned: &Versioned,
+		_ctx: &mut TxContext
     ) {
         abort 0
     }
 
     public entry fun decrease_liquidity<CoinTypeA, CoinTypeB, FeeType>(
-		pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
-		positions: &mut Positions,
-		nft: &mut TurbosPositionNFT,
-		liquidity: u128,
-        amount_a_min: u64,
-        amount_b_min: u64,
-        deadline: u64,
-        clock: &Clock,
-        versioned: &Versioned,
-		ctx: &mut TxContext
+		_pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+		_positions: &mut Positions,
+		_nft: &mut TurbosPositionNFT,
+		_liquidity: u128,
+        _amount_a_min: u64,
+        _amount_b_min: u64,
+        _deadline: u64,
+        _clock: &Clock,
+        _versioned: &Versioned,
+		_ctx: &mut TxContext
     ) {
         abort 0
     }
 
     public fun collect_with_return_<CoinTypeA, CoinTypeB, FeeType>(
-        pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
-        positions: &mut Positions,
-        nft: &mut TurbosPositionNFT,
-        amount_a_max: u64,
-        amount_b_max: u64,
-        recipient: address,
-        deadline: u64,
-        clock: &Clock,
-        versioned: &Versioned,
-        ctx: &mut TxContext
+        _pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _positions: &mut Positions,
+        _nft: &mut TurbosPositionNFT,
+        _amount_a_max: u64,
+        _amount_b_max: u64,
+        _recipient: address,
+        _deadline: u64,
+        _clock: &Clock,
+        _versioned: &Versioned,
+        _ctx: &mut TxContext
     ): (Coin<CoinTypeA>, Coin<CoinTypeB>) {
         abort 0
     }
 
     public entry fun collect<CoinTypeA, CoinTypeB, FeeType>(
-		pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
-		positions: &mut Positions,
-		nft: &mut TurbosPositionNFT,
-        amount_a_max: u64,
-        amount_b_max: u64,
-        recipient: address,
-        deadline: u64,
-        clock: &Clock,
-        versioned: &Versioned,
-		ctx: &mut TxContext
+		_pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+		_positions: &mut Positions,
+		_nft: &mut TurbosPositionNFT,
+        _amount_a_max: u64,
+        _amount_b_max: u64,
+        _recipient: address,
+        _deadline: u64,
+        _clock: &Clock,
+        _versioned: &Versioned,
+		_ctx: &mut TxContext
     ) {
         abort 0
     }
 
     public fun collect_reward_with_return_<CoinTypeA, CoinTypeB, FeeType, RewardCoin>(
-        pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
-        positions: &mut Positions,
-        nft: &mut TurbosPositionNFT,
-        vault: &mut PoolRewardVault<RewardCoin>,
-        reward_index: u64,
-        amount_max: u64,
-        recipient: address,
-        deadline: u64,
-        clock: &Clock,
-        versioned: &Versioned,
-        ctx: &mut TxContext
+        _pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _positions: &mut Positions,
+        _nft: &mut TurbosPositionNFT,
+        _vault: &mut PoolRewardVault<RewardCoin>,
+        _reward_index: u64,
+        _amount_max: u64,
+        _recipient: address,
+        _deadline: u64,
+        _clock: &Clock,
+        _versioned: &Versioned,
+        _ctx: &mut TxContext
     ): Coin<RewardCoin> {
         abort 0
     }
 
     public entry fun collect_reward<CoinTypeA, CoinTypeB, FeeType, RewardCoin>(
-		pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
-		positions: &mut Positions,
-		nft: &mut TurbosPositionNFT,
-        vault: &mut PoolRewardVault<RewardCoin>,
-        reward_index: u64,
-        amount_max: u64,
-        recipient: address,
-        deadline: u64,
-        clock: &Clock,
-        versioned: &Versioned,
-		ctx: &mut TxContext
+		_pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+		_positions: &mut Positions,
+		_nft: &mut TurbosPositionNFT,
+        _vault: &mut PoolRewardVault<RewardCoin>,
+        _reward_index: u64,
+        _amount_max: u64,
+        _recipient: address,
+        _deadline: u64, 
+        _clock: &Clock,
+        _versioned: &Versioned,
+		_ctx: &mut TxContext
     ) {
         abort 0
     }
 
     public fun get_position_info(
-        positions: &Positions,
-        nft_address: address,
+        _positions: &Positions,
+        _nft_address: address,
     ): (I32, I32, u128) {
         abort 0
     }

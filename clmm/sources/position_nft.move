@@ -25,11 +25,11 @@ module turbos_clmm::position_nft {
         fee_type: TypeName,
     }
 
-    public fun pool_id(nft: &TurbosPositionNFT): ID {
+    public fun pool_id(_nft: &TurbosPositionNFT): ID {
         abort 0
     }
 
-    public fun position_id(nft: &TurbosPositionNFT): ID {
+    public fun position_id(_nft: &TurbosPositionNFT): ID {
         abort 0
     }
 

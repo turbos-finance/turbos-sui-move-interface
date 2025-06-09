@@ -1,6 +1,7 @@
 [package]
 name = "TurbosCLMM"
 version = "0.1.4"
+published-at = "0xbce833e2aa9266eacad68c8db25e83cb52941a2eba168c4a28bb4aa38a2be9ea"
 
 [dependencies]
 Sui = { git = "https://github.com/MystenLabs/sui.git", subdir="crates/sui-framework/packages/sui-framework", rev = "testnet", override = true }

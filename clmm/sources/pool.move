@@ -194,6 +194,54 @@ module turbos_clmm::pool {
         abort 0
     }
 
+     public fun get_pool_liquidity<CoinTypeA, CoinTypeB, FeeType>(
+        _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+    ): u128 {
+        abort 0
+    }
+
+    public fun get_tick_liquidity_gross(
+        _tick: &Tick,
+    ): u128 {
+        abort 0
+    }
+
+    public fun get_tick_liquidity_net(
+        _tick: &Tick,
+    ): I128 {
+        abort 0
+    }
+
+    public fun get_tick_initialized(
+        _tick: &Tick,
+    ): bool {
+        abort 0
+    }
+
+    public fun get_tick_fee_growth_outside(
+        _tick: &Tick,
+    ): (u128, u128) {
+        abort 0
+    }
+
+    public fun get_tick_reward_growths_outside(
+        _tick: &Tick,
+    ): vector<u128> {
+        abort 0
+    }
+
+    public fun get_pool_fee_growth_global<CoinTypeA, CoinTypeB, FeeType>(
+        _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+    ): (u128, u128) {
+        abort 0
+    }
+
+    public fun get_pool_reward_last_updated_time_ms<CoinTypeA, CoinTypeB, FeeType>(
+        _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+    ): u64 {
+        abort 0
+    }
+
     public fun get_position_fee_growth_inside_a<CoinTypeA, CoinTypeB, FeeType>(
         _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
         _key: String
@@ -286,6 +334,14 @@ module turbos_clmm::pool {
         _receipt: FlashSwapReceiptPartner<CoinTypeA, CoinTypeB>,
         _versioned: &Versioned,
     ) {
+        abort 0
+    }
+
+    public fun next_initialized_tick_within_one_word<CoinTypeA, CoinTypeB, FeeType>(
+        _pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _tick_current_index: I32,
+        _lte: bool
+    ): (I32, bool) {
         abort 0
     }
 }

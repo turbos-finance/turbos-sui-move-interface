@@ -176,6 +176,12 @@ module turbos_clmm::pool {
         abort 0
     }
 
+    public fun get_pool_unlocked<CoinTypeA, CoinTypeB, FeeType>(
+        _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
+    ): bool {
+        abort 0
+    }
+
     public fun get_pool_sqrt_price<CoinTypeA, CoinTypeB, FeeType>(
         _pool: &Pool<CoinTypeA, CoinTypeB, FeeType>,
     ): u128 {

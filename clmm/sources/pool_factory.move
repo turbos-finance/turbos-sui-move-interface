@@ -11,10 +11,11 @@ module turbos_clmm::pool_factory {
 	use turbos_clmm::position_nft::{TurbosPositionNFT};
     use turbos_clmm::fee::{Fee};
 	use sui::clock::{Clock};
-	use turbos_clmm::pool::{Versioned};
+	use turbos_clmm::pool::{Versioned, Pool};
 	use std::string::{String};
 	use sui::table::{Table};
 	use std::option::{Option};
+	use turbos_clmm::acl;
     
 	struct PoolFactoryAdminCap has key, store { id: UID }
 
@@ -33,6 +34,11 @@ module turbos_clmm::pool_factory {
         fee_map: VecMap<String, ID>,
 		fee_protocol: u32,
 		pools: Table<ID, PoolSimpleInfo>,
+    }
+
+    struct AclConfig has key, store {
+        id: UID,
+        acl: acl::ACL,
     }
 
 	public entry fun deploy_pool_and_mint<CoinTypeA, CoinTypeB, FeeType>(
@@ -96,6 +102,15 @@ module turbos_clmm::pool_factory {
 	public fun get_pool_id<CoinTypeA, CoinTypeB, FeeType>(
         _pool_config: &mut PoolConfig,
     ): Option<ID> {
+        abort 0
+    }
+
+    public entry fun toggle_pool_status_v2<CoinTypeA, CoinTypeB, FeeType>(
+        _acl_config: &AclConfig,
+        _pool: &mut Pool<CoinTypeA, CoinTypeB, FeeType>,
+        _versioned: &Versioned,
+        _ctx: &mut TxContext,
+    ) {
         abort 0
     }
 }
